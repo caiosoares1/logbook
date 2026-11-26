@@ -1,0 +1,57 @@
+name: Gerar APK Android
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Gerar projeto Android (prebuild)
+        run: npx expo prebuild --platform android --no-install
+        env:
+          CI: 1
+
+      - name: Compilar APK (release)
+        working-directory: android
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Renomear APK
+        run: cp android/app/build/outputs/apk/release/app-release.apk meu-treino-${{ github.run_number }}.apk
+
+      - name: Guardar APK nos artefatos do workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: meu-treino-apk
+          path: meu-treino-${{ github.run_number }}.apk
+
+      - name: Publicar APK numa release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Meu Treino – build ${{ github.run_number }}
+          body: APK gerado automaticamente a partir do commit ${{ github.sha }}. Baixe pelo celular e instale.
+          files: meu-treino-${{ github.run_number }}.apk
