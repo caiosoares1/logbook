@@ -67,8 +67,8 @@ const DL = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
 const WEEKDAYS = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
 const WD_SHORT = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
 const MONTHS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-const K_WORKOUTS = 'meu-treino:workouts:v1';
-const K_DRAFT = 'meu-treino:draft:v1';
+const K_WORKOUTS = 'logbook:workouts:v1';
+const K_DRAFT = 'logbook:draft:v1';
 
 /* ---------------- Helpers ---------------- */
 const num = (v) => { const n = parseFloat(String(v ?? '').replace(',', '.')); return Number.isFinite(n) ? n : null; };
@@ -204,7 +204,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <StatusBar style={dark ? 'light' : 'dark'} />
-      <SQLiteProvider databaseName="meutreino.db" onInit={migrate}>
+      <SQLiteProvider databaseName="logbook.db" onInit={migrate}>
         <Main dark={dark} />
       </SQLiteProvider>
     </SafeAreaProvider>

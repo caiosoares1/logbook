@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Meu Treino",
-    "slug": "meu-treino",
+    "name": "Logbook",
+    "slug": "logbook",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.meutreino.app"
+      "bundleIdentifier": "com.logbook.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -17,7 +17,7 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "package": "com.meutreino.app"
+      "package": "com.logbook.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"

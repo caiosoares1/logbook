@@ -1,4 +1,4 @@
-# Meu Treino
+# Logbook
 
 App de registro de treino (Upper/Lower + PPL) feito com Expo SDK 58.
 
