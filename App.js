@@ -10,10 +10,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { useKeepAwake } from 'expo-keep-awake';
 import Svg, { Path, Circle, Line, Rect, Text as SvgText, Defs, LinearGradient, Stop } from 'react-native-svg';
-import {
-  useFonts, Archivo_400Regular, Archivo_500Medium, Archivo_600SemiBold, Archivo_700Bold, Archivo_800ExtraBold,
-} from '@expo-google-fonts/archivo';
-import { ArchivoNarrow_600SemiBold, ArchivoNarrow_700Bold } from '@expo-google-fonts/archivo-narrow';
+import { useFonts } from 'expo-font';
+// Importa só os pesos usados, para não embutir as 18 variações da fonte no APK
+import { Archivo_400Regular } from '@expo-google-fonts/archivo/400Regular';
+import { Archivo_500Medium } from '@expo-google-fonts/archivo/500Medium';
+import { Archivo_600SemiBold } from '@expo-google-fonts/archivo/600SemiBold';
+import { Archivo_700Bold } from '@expo-google-fonts/archivo/700Bold';
+import { Archivo_800ExtraBold } from '@expo-google-fonts/archivo/800ExtraBold';
+import { ArchivoNarrow_600SemiBold } from '@expo-google-fonts/archivo-narrow/600SemiBold';
+import { ArchivoNarrow_700Bold } from '@expo-google-fonts/archivo-narrow/700Bold';
 
 /* ---------------- Ficha inicial (só usada para criar o banco) ---------------- */
 const SEED = {

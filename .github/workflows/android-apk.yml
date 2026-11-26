@@ -37,7 +37,8 @@ jobs:
 
       - name: Compilar APK (release)
         working-directory: android
-        run: ./gradlew assembleRelease --no-daemon
+        # Só ARM (todos os celulares); x86 serve apenas para emuladores
+        run: ./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
 
       - name: Renomear APK
         run: cp android/app/build/outputs/apk/release/app-release.apk logbook-${{ github.run_number }}.apk
